@@ -71,11 +71,7 @@ export default class App extends Component {
     return (
       <div className={box}>
         <Searchbar onSubmit={this.fetchImagesAPI} />
-        {/* {isLoading ? (
-          <MoonLoader css={overrideLoader} size={100} color={'#000'} />
-        ) : (
-          <ImageGallery images={images} onOpenModal={this.openModal} />
-        )} */}
+  
         {isLoading && (
           <MoonLoader css={overrideLoader} size={100} color={'#000'} />
         )}
@@ -83,10 +79,11 @@ export default class App extends Component {
         {!!images.length && (
           <ImageGallery images={images} onOpenModal={this.openModal} />
         )}
-        {/* <Button onClick={this.isLoad} /> */}
+       
         {!!images.length && (
           <Button onClick={this.handleLoadMore} isLoading={isLoading} />
         )}
+        
         {isModalOpen && (
           <Modal
             largeImageURL={largeImageURL}
