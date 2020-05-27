@@ -2,13 +2,13 @@
   this['webpackJsonpgoit-react-hw-02-phonebook'] || []).push([
   [0],
   {
-    11: function (e, a, t) {
+    10: function (e, a, t) {
       e.exports = {
         ImageGalleryItem: 'ImageGalleryItem_ImageGalleryItem__3AIjF',
         ImageGalleryItemImage: 'ImageGalleryItem_ImageGalleryItemImage__60XK-',
       };
     },
-    12: function (e, a, t) {
+    11: function (e, a, t) {
       e.exports = {
         Overlay: 'Modal_Overlay__ln64V',
         Modal: 'Modal_Modal__2zgSq',
@@ -17,32 +17,41 @@
     26: function (e, a, t) {
       e.exports = { App: 'App_App__3SAy6' };
     },
-    30: function (e, a, t) {
+    31: function (e, a, t) {
       e.exports = { ImagesGallery: 'ImageGallery_ImagesGallery__x-_pI' };
     },
-    31: function (e, a, t) {
+    32: function (e, a, t) {
       e.exports = { btn: 'Button_btn__1fa38' };
     },
-    32: function (e, a, t) {
-      e.exports = t(59);
+    34: function (e, a, t) {
+      e.exports = t(60);
     },
-    59: function (e, a, t) {
+    6: function (e, a, t) {
+      e.exports = {
+        Searchbar: 'Searchbar_Searchbar__3ipNL',
+        SearchForm: 'Searchbar_SearchForm__2hUjV',
+        SearchFormBtn: 'Searchbar_SearchFormBtn__3HGbh',
+        SearchFormBtnLabel: 'Searchbar_SearchFormBtnLabel__3GTXK',
+        SearchFormInput: 'Searchbar_SearchFormInput__2SLM1',
+      };
+    },
+    60: function (e, a, t) {
       'use strict';
       t.r(a);
       var n = t(0),
         r = t.n(n),
         o = t(25),
         c = t.n(o),
-        l = t(13),
+        l = t(12),
         s = t(2),
         i = t(3),
         m = t(5),
         u = t(4),
         g = t(26),
-        h = t(7),
+        h = t(27),
         p = t.n(h),
-        d = t(10),
-        f = t(9);
+        d = t(9),
+        f = t(7);
       function b() {
         var e = Object(d.a)(['\n  display: block;\n  margin: 0 auto;\n']);
         return (
@@ -63,7 +72,7 @@
       }
       var v = Object(f.css)(y()),
         I = Object(f.css)(b()),
-        S = t(28),
+        S = t(29),
         _ = t.n(S),
         O = '&key=15725312-965e6abfe89225a1afd144b44',
         E = function () {
@@ -96,7 +105,7 @@
                 text: 'No results were found for your request.',
               });
           }),
-        j = t(29),
+        j = t(30),
         M = t(6),
         w = (function (e) {
           Object(m.a)(t, e);
@@ -163,28 +172,30 @@
             t
           );
         })(n.Component),
-        C = t(11),
-        F = function (e) {
-          var a = e.webformatURL,
-            t = e.tags,
-            n = e.onOpenModal;
+        F = t(10),
+        C = function (e) {
+          var a = e.largeImageURL,
+            t = e.webformatURL,
+            n = e.tags,
+            o = e.onOpenModal;
           return r.a.createElement(
             r.a.Fragment,
             null,
             r.a.createElement(
               'li',
-              { className: C.ImageGaleryItem },
+              { className: F.ImageGaleryItem },
               r.a.createElement('img', {
-                src: a,
-                alt: t,
-                className: C.ImageGalleryItemImage,
-                onClick: n,
+                src: t,
+                alt: n,
+                className: F.ImageGalleryItemImage,
+                onClick: o,
+                'data-source': a,
               }),
             ),
           );
         },
-        R = t(30),
-        G = function (e) {
+        R = t(31),
+        x = function (e) {
           var a = e.images,
             t = e.onOpenModal;
           return r.a.createElement(
@@ -195,19 +206,15 @@
               { className: R.ImagesGallery },
               a.map(function (e) {
                 return r.a.createElement(
-                  F,
-                  Object.assign({ key: e.id }, e, {
-                    onOpenModal: function () {
-                      return t(e.largeImageURL, e.tags);
-                    },
-                  }),
+                  C,
+                  Object.assign({ key: e.id }, e, { onOpenModal: t }),
                 );
               }),
             ),
           );
         },
-        N = t(12),
-        U = (function (e) {
+        G = t(11),
+        N = (function (e) {
           Object(m.a)(t, e);
           var a = Object(u.a)(t);
           function t() {
@@ -255,13 +262,13 @@
                     r.a.createElement(
                       'div',
                       {
-                        className: N.Overlay,
+                        className: G.Overlay,
                         ref: this.backdropRef,
                         onClick: this.handleBackdropClick,
                       },
                       r.a.createElement(
                         'div',
-                        { className: N.Modall },
+                        { className: G.Modall },
                         r.a.createElement('img', { src: a, alt: t }),
                       ),
                     ),
@@ -272,7 +279,7 @@
             t
           );
         })(n.Component),
-        x = function (e) {
+        U = function (e) {
           return e.map(function (e) {
             return {
               id: e.id,
@@ -282,23 +289,36 @@
             };
           });
         },
-        q = t(31),
-        A = function (e) {
+        q = t(32),
+        A = t(33),
+        B = t.n(A),
+        K = function (e) {
           var a = e.onClick,
             t = e.isLoading;
           return r.a.createElement(
             'div',
             null,
-            r.a.createElement(
-              'button',
-              { className: q.btn, type: 'submit', onClick: a },
-              t
-                ? r.a.createElement(p.a, { css: I, size: 18, color: '#fff' })
-                : 'Load more...',
-            ),
+            t
+              ? r.a.createElement(B.a, {
+                  css: I,
+                  height: '6px',
+                  width: '180px',
+                  color: '#3f51b5',
+                })
+              : r.a.createElement(
+                  'button',
+                  { className: q.btn, type: 'submit', onClick: a },
+                  'Load more...',
+                ),
           );
         },
-        B = (function (e) {
+        P = function () {
+          window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth',
+          });
+        },
+        z = (function (e) {
           Object(m.a)(t, e);
           var a = Object(u.a)(t);
           function t() {
@@ -321,7 +341,7 @@
                   E(a)
                     .then(function (t) {
                       var n = t.data;
-                      e.setState({ images: x(n.hits), query: a }), k(n.hits);
+                      e.setState({ images: U(n.hits), query: a }), k(n.hits);
                     })
                     .catch(function (a) {
                       return e.setState({ error: a });
@@ -332,12 +352,6 @@
               }),
               (e.handleLoadMore = function (a) {
                 e.setState({ isLoading: !0 }),
-                  setTimeout(function () {
-                    window.scrollTo({
-                      top: document.documentElement.scrollHeight,
-                      behavior: 'smooth',
-                    });
-                  }, 1500),
                   E(e.state.query, e.state.page + 1)
                     .then(function (a) {
                       var t = a.data;
@@ -345,7 +359,7 @@
                         return {
                           images: [].concat(
                             Object(l.a)(e.images),
-                            Object(l.a)(x(t.hits)),
+                            Object(l.a)(U(t.hits)),
                           ),
                           page: e.page + 1,
                         };
@@ -355,14 +369,17 @@
                       return e.setState({ error: a });
                     })
                     .finally(function () {
-                      return e.setState({ isLoading: !1 });
+                      P(), e.setState({ isLoading: !1 });
                     });
               }),
-              (e.openModal = function (a, t) {
-                return e.setState({
+              (e.openModal = function (a) {
+                var t = a.target,
+                  n = t.alt,
+                  r = t.dataset;
+                e.setState({
                   isModalOpen: !0,
-                  largeImageURL: a,
-                  tags: t,
+                  largeImageURL: r.source,
+                  tags: n,
                 });
               }),
               (e.closeModal = function () {
@@ -393,17 +410,20 @@
                         color: '#000',
                       }),
                     !!a.length &&
-                      r.a.createElement(G, {
-                        images: a,
-                        onOpenModal: this.openModal,
-                      }),
-                    !!a.length &&
-                      r.a.createElement(A, {
-                        onClick: this.handleLoadMore,
-                        isLoading: t,
-                      }),
+                      r.a.createElement(
+                        r.a.Fragment,
+                        null,
+                        r.a.createElement(x, {
+                          images: a,
+                          onOpenModal: this.openModal,
+                        }),
+                        r.a.createElement(K, {
+                          onClick: this.handleLoadMore,
+                          isLoading: t,
+                        }),
+                      ),
                     n &&
-                      r.a.createElement(U, {
+                      r.a.createElement(N, {
                         largeImageURL: o,
                         tags: c,
                         onCloseModal: this.closeModal,
@@ -415,18 +435,9 @@
             t
           );
         })(n.Component);
-      c.a.render(r.a.createElement(B, null), document.getElementById('root'));
-    },
-    6: function (e, a, t) {
-      e.exports = {
-        Searchbar: 'Searchbar_Searchbar__3ipNL',
-        SearchForm: 'Searchbar_SearchForm__2hUjV',
-        SearchFormBtn: 'Searchbar_SearchFormBtn__3HGbh',
-        SearchFormBtnLabel: 'Searchbar_SearchFormBtnLabel__3GTXK',
-        SearchFormInput: 'Searchbar_SearchFormInput__2SLM1',
-      };
+      c.a.render(r.a.createElement(z, null), document.getElementById('root'));
     },
   },
-  [[32, 1, 2]],
+  [[34, 1, 2]],
 ]);
-//# sourceMappingURL=main.c380bc31.chunk.js.map
+//# sourceMappingURL=main.1ab3dfcb.chunk.js.map
