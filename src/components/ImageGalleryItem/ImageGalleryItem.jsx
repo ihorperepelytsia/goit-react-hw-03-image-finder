@@ -5,7 +5,12 @@ import {
 } from './ImageGalleryItem.module.css';
 import PropTypes from 'prop-types';
 
-const ImageGalleryItem = ({ webformatURL, tags, onOpenModal }) => (
+const ImageGalleryItem = ({
+  largeImageURL,
+  webformatURL,
+  tags,
+  onOpenModal,
+}) => (
   <>
     <li className={ImageGaleryItem}>
       <img
@@ -13,6 +18,7 @@ const ImageGalleryItem = ({ webformatURL, tags, onOpenModal }) => (
         alt={tags}
         className={ImageGalleryItemImage}
         onClick={onOpenModal}
+        data-source={largeImageURL}
       />
     </li>
   </>

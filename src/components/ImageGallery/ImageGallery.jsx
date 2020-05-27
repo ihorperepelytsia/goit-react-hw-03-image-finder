@@ -7,11 +7,7 @@ const ImageGallery = ({ images, onOpenModal }) => (
   <>
     <ul className={ImagesGallery}>
       {images.map(img => (
-        <ImageGalleryItem
-          key={img.id}
-          {...img}
-          onOpenModal={() => onOpenModal(img.largeImageURL, img.tags)}
-        />
+        <ImageGalleryItem key={img.id} {...img} onOpenModal={onOpenModal} />
       ))}
     </ul>
   </>

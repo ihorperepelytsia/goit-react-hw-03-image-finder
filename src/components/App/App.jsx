@@ -9,6 +9,7 @@ import ImageGallery from '../ImageGallery/ImageGallery';
 import Modal from '../Modal/Modal';
 import mapperImages from '../../utils/mapperImages';
 import Button from '../Button/Button';
+import scroll from '../../utils/scroll';
 
 export default class App extends Component {
   state = {
@@ -38,12 +39,6 @@ export default class App extends Component {
 
   handleLoadMore = e => {
     this.setState({ isLoading: true });
-    setTimeout(() => {
-      window.scrollTo({
-        top: document.documentElement.scrollHeight,
-        behavior: 'smooth',
-      });
-    }, 1500);
 
     fetchImages(this.state.query, this.state.page + 1)
       .then(({ data }) => {
@@ -53,15 +48,19 @@ export default class App extends Component {
         }));
       })
       .catch(error => this.setState({ error }))
-      .finally(() => this.setState({ isLoading: false }));
+      .finally(() => {
+        scroll();
+        this.setState({ isLoading: false });
+      });
   };
 
-  openModal = (webformatURL, tags) =>
+  openModal = ({ target: { alt, dataset } }) => {
     this.setState({
       isModalOpen: true,
-      largeImageURL: webformatURL,
-      tags: tags,
+      largeImageURL: dataset.source,
+      tags: alt,
     });
+  };
 
   closeModal = () => this.setState({ isModalOpen: false, largeImageURL: '' });
 
@@ -71,19 +70,18 @@ export default class App extends Component {
     return (
       <div className={box}>
         <Searchbar onSubmit={this.fetchImagesAPI} />
-  
+
         {isLoading && (
           <MoonLoader css={overrideLoader} size={100} color={'#000'} />
         )}
 
         {!!images.length && (
-          <ImageGallery images={images} onOpenModal={this.openModal} />
+          <>
+            <ImageGallery images={images} onOpenModal={this.openModal} />
+            <Button onClick={this.handleLoadMore} isLoading={isLoading} />
+          </>
         )}
-       
-        {!!images.length && (
-          <Button onClick={this.handleLoadMore} isLoading={isLoading} />
-        )}
-        
+
         {isModalOpen && (
           <Modal
             largeImageURL={largeImageURL}
